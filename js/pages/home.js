@@ -22,10 +22,10 @@ export default async function home() {
             <div class="about__wrapper">
                 <div class="about__item">
                     <p class="about__item__title">
-                        We don't Just Organize Events
+                        Connect through Love & Originality
                     </p>
                     <div class="about__item__highlight-block">
-                        <span>We Create Memories</span>
+                        <span>カバー株式会社とは無関係 </span>
                     </div>
                     <div class="about__item__blocks">
                         <span class="about__block">Events</span>
@@ -35,7 +35,7 @@ export default async function home() {
                 </div>
                 <div class="about__icon">
                     <div class="wrap__icon">
-                        <img src="assets/imgs/hero.webp" alt="WS&F team illustration" fetchpriority="high" decoding="async" width="800" height="800">
+                        <img src="assets/imgs/c118ae16fa54b8e4718cc01416f4abd4.webp" alt="WS&F team illustration" fetchpriority="high" decoding="async" width="800" height="800">
                     </div>
                     <div class="bubble"></div>
                     <div class="bubble"></div>
@@ -203,7 +203,7 @@ export default async function home() {
 
 
 
-        <section class="contact">
+        <section class="contact" id="contact">
             <h2 class="title">CONTACT</h2>
             <p class="desc">
                 If you are interested, please contact us via email or facebook below

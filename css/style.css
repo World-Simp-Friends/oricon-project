@@ -82,8 +82,8 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         font-smooth: always;
-        background: linear-gradient(160deg, #0D0A1A 0%, #1A1040 40%, #12082B 100%);
-        background-attachment: fixed;
+        background: linear-gradient(rgba(13, 10, 26, 0.7), rgba(26, 16, 64, 0.8)), url('../assets/imgs/oricon_banner.png') no-repeat center center fixed;
+        background-size: cover;
         color: var(--text-color);
     }
 
@@ -282,12 +282,12 @@
     }
 
     .header .header__title .logo {
-        margin-right: 20px;
+        margin-right: 10px;
     }
 
     .header .header__title .logo img {
-        width: 40px;
-        height: 40px;
+        width: 170px;
+        height: 50px;
         object-fit: contain;
     }
 
