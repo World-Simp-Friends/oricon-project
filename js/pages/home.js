@@ -36,6 +36,12 @@ export default async function home() {
                     <span class="hero__meta-dot"></span>
                     <span class="hero__meta-tag">Connection</span>
                 </div>
+                <div class="hero__social-link">
+                    <a href="https://x.com/oriconproject" target="_blank" rel="noopener noreferrer" class="hero__x-link" aria-label="Follow on X">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        <span>@oriconproject</span>
+                    </a>
+                </div>
                 <div class="hero__disclaimer">
                     カバー株式会社とは無関係
                 </div>
@@ -47,10 +53,6 @@ export default async function home() {
                 </div>
             </div>
         </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <img src="assets/imgs/Logo transparent/Asset Logo2.png" alt="" width="48" height="24">
-        </div>
 
         <section class="about-detail" id="about-detail">
             <div class="section-container">
@@ -70,10 +72,6 @@ export default async function home() {
                 </div>
             </div>
         </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <img src="assets/imgs/Logo transparent/Asset Logo2.png" alt="" width="48" height="24">
-        </div>
 
         <section class="projects" id="projects">
             <div class="section-container">
@@ -110,10 +108,6 @@ export default async function home() {
                 </div>
             </div>
         </section>
-
-        <div class="section-divider" aria-hidden="true">
-            <img src="assets/imgs/Logo transparent/Asset Logo2.png" alt="" width="48" height="24">
-        </div>
 
         <section class="network" id="network">
             <div class="section-container network__section-inner">
@@ -221,10 +215,6 @@ export default async function home() {
             </div>
         </section>
 
-        <div class="section-divider" aria-hidden="true">
-            <img src="assets/imgs/Logo transparent/Asset Logo2.png" alt="" width="48" height="24">
-        </div>
-
         <section class="contact" id="contact">
             <div class="section-container">
                 <h2 class="title">CONTACT</h2>
@@ -253,6 +243,18 @@ export default async function home() {
                             <span class="contact__card__title">FOLLOW ON FACEBOOK</span>
                             <span class="contact__card__desc">Oricon Project</span>
                             <span class="contact__card__hint">Join our community</span>
+                        </div>
+                    </a>
+
+                    <!-- X (Twitter) Card -->
+                    <a href="https://x.com/oriconproject" target="_blank" rel="noopener noreferrer" class="contact__card fade-in-up">
+                        <div class="contact__card__icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </div>
+                        <div class="contact__card__content">
+                            <span class="contact__card__title">FOLLOW ON X</span>
+                            <span class="contact__card__desc">@oriconproject</span>
+                            <span class="contact__card__hint">Stay updated</span>
                         </div>
                     </a>
                 </div>

@@ -149,7 +149,7 @@
 
     /* Hero scales for large screens */
     .hero__tagline-logo img {
-        max-width: 520px;
+        max-width: 620px;
     }
 
     .hero__visual-frame {
@@ -233,7 +233,7 @@
     }
 
     .hero__tagline-logo img {
-        max-width: 340px;
+        max-width: 420px;
     }
 
     .hero__visual-frame {
@@ -320,8 +320,8 @@
     }
 
     .header .header__title .logo img {
-        width: 40px;
-        height: 40px;
+        width: 56px;
+        height: 56px;
     }
 
     .header__title>p {
@@ -349,7 +349,12 @@
     }
 
     .hero__tagline-logo img {
-        max-width: 260px;
+        max-width: 300px;
+    }
+
+    .hero__x-link {
+        font-size: 1.2rem;
+        padding: 6px 18px;
     }
 
     .hero__eyebrow-text {
@@ -792,7 +797,18 @@
     }
 
     .hero__tagline-logo img {
-        max-width: 200px;
+        max-width: 230px;
+    }
+
+    .hero__x-link {
+        font-size: 1.1rem;
+        padding: 5px 14px;
+        gap: 6px;
+    }
+
+    .hero__x-link svg {
+        width: 12px;
+        height: 12px;
     }
 
     .hero__visual-frame {
