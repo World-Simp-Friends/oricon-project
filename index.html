@@ -38,11 +38,10 @@
     <!-- Resource Hints & Preconnects for Web Vitals Optimization -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- Preload Critical Assets -->
-    <link rel="preload" href="/assets/fonts/KHInterferenceTRIAL-Regular.ttf" as="font" type="font/ttf" crossorigin>
-    <link rel="preload" href="/assets/fonts/NATS-Regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/Modern Romance.otf" as="font" type="font/otf" crossorigin>
+    <link rel="preload" href="/assets/fonts/Montserrat-VariableFont_wght.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="preload" href="/assets/imgs/c118ae16fa54b8e4718cc01416f4abd4.webp" as="image" fetchpriority="high">
     <link rel="preload" href="/assets/imgs/logo.webp" as="image">
 
@@ -155,23 +154,23 @@
         }
 
         @font-face {
-            font-family: 'KH Interference';
-            src: url('/assets/fonts/KHInterferenceTRIAL-Regular.ttf') format('truetype');
-            font-weight: 400;
+            font-family: 'Modern Romance';
+            src: url('/assets/fonts/Modern Romance.otf') format('opentype');
+            font-weight: normal;
             font-style: normal;
             font-display: swap;
         }
 
         @font-face {
-            font-family: 'KH Interference';
-            src: url('/assets/fonts/KHInterferenceTRIAL-Bold.ttf') format('truetype');
-            font-weight: 700;
+            font-family: 'Montserrat';
+            src: url('/assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+            font-weight: 100 900;
             font-style: normal;
             font-display: swap;
         }
 
         .global-loader__text {
-            font-family: "Space Grotesk", "KH Interference", sans-serif;
+            font-family: 'Montserrat', sans-serif;
             font-size: 1.4rem;
             color: rgba(167, 139, 250, 0.7);
             letter-spacing: 0.35em;
@@ -184,29 +183,41 @@
             0% {
                 transform: translate(-30%, -30%) rotate(0deg);
             }
+
             100% {
                 transform: translate(0, 0) rotate(0deg);
             }
         }
 
         @keyframes loaderFloat {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) scale(1);
             }
+
             50% {
                 transform: translateY(-8px) scale(1.01);
             }
         }
 
         @keyframes loaderSpin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         @keyframes loaderPulseText {
-            0%, 100% {
+
+            0%,
+            100% {
                 opacity: 0.4;
             }
+
             50% {
                 opacity: 0.9;
             }
@@ -280,6 +291,9 @@
         <main class="content" id="main-content"></main>
 
         <footer class="footer" role="contentinfo">
+            <div class="footer__logo">
+                <img src="/assets/imgs/Logo transparent/Asset 22.png" alt="Oricon" width="100" height="40" loading="lazy">
+            </div>
             <nav class="footer__links" aria-label="Footer navigation">
                 <a href="/home#about" data-route="home">About</a>
                 <a href="/home#projects" data-route="home">Projects</a>
