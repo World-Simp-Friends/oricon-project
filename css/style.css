@@ -436,19 +436,17 @@
 
     .content .about .desc,
     .content .about-detail .desc,
+    .content .projects .desc,
+    .content .network .desc,
     .content .works .desc,
     .content .contact .desc {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        align-self: center;
         text-align: center;
+        margin: 0 auto 50px auto;
         font-size: 2.8em;
         font-weight: 400;
         letter-spacing: 0;
         line-height: 1.4;
         color: var(--text-muted);
-        margin-bottom: 50px;
     }
 
     .content .about-detail .desc {
@@ -458,15 +456,21 @@
 
     .content .about .desc::before,
     .content .about-detail .desc::before,
+    .content .projects .desc::before,
+    .content .network .desc::before,
     .content .works .desc::before,
     .content .contact .desc::before {
-        content: '▸';
-        margin-right: 10px;
-        margin-left: -13px;
-        font-size: 5rem;
-        margin-bottom: -7px;
-        vertical-align: baseline;
-        color: var(--accent);
+        content: '';
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        background-image: url('../assets/imgs/Logo transparent/Asset 29.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-right: 12px;
+        vertical-align: middle;
+        margin-top: -4px;
     }
 
 
@@ -561,15 +565,16 @@
     }
 
     .hero__meta-tag {
-        display: inline-flex;
-        justify-content: center;
-        align-items: center;
+        display: inline-block;
+        text-align: center;
         width: 170px;
         padding: 10px 0;
         background-color: transparent;
         color: var(--accent);
         border: 1px solid rgba(72, 183, 212, 0.2);
-        border-radius: var(--radius-md);
+        border: 2px solid rgb(255, 255, 255);
+        /* border-radius: var(--radius-md); */
+        border-radius: 999px;
         font-size: 1.6rem;
         font-weight: 600;
         font-family: 'Modern Romance', sans-serif;
@@ -769,27 +774,7 @@
         font-size: 64px;
     }
 
-    .content .projects .desc {
-        display: flex;
-        align-items: center;
-        align-self: start;
-        font-size: 2.8em;
-        font-weight: 400;
-        letter-spacing: 0;
-        line-height: 1.4;
-        color: var(--text-muted);
-        margin-bottom: 50px;
-    }
 
-    .content .projects .desc::before {
-        content: '▸';
-        margin-right: 10px;
-        margin-left: -13px;
-        font-size: 5rem;
-        margin-bottom: -7px;
-        vertical-align: baseline;
-        color: var(--accent);
-    }
 
     /* === Project Showcase — Cinematic Card === */
     .project-showcase {
@@ -1141,27 +1126,7 @@
         font-size: 64px;
     }
 
-    .content .network .desc {
-        display: flex;
-        align-items: center;
-        align-self: start;
-        font-size: 2.8em;
-        font-weight: 400;
-        letter-spacing: 0;
-        line-height: 1.4;
-        color: var(--text-muted);
-        margin-bottom: 50px;
-    }
 
-    .content .network .desc::before {
-        content: '▸';
-        margin-right: 10px;
-        margin-left: -13px;
-        font-size: 5rem;
-        margin-bottom: -7px;
-        vertical-align: baseline;
-        color: var(--accent);
-    }
 
     .network__section-inner {
         position: relative;
