@@ -80,6 +80,13 @@ class Router {
 
     initEventModal() {
         document.addEventListener('click', (e) => {
+            // Intercept clicks on side backdrop cards for swap
+            const backdrop = e.target.closest('.project-showcase__backdrop[data-event]');
+            if (backdrop) {
+                this.swapShowcaseCard(backdrop);
+                return;
+            }
+
             const projectCard = e.target.closest('.project-showcase[data-event]');
             if (projectCard) {
                 try {
@@ -179,6 +186,54 @@ class Router {
         modal.classList.remove('open');
         modal.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = '';
+    }
+
+    swapShowcaseCard(backdrop) {
+        const showcase = backdrop.closest('.project-showcase');
+        if (!showcase || showcase.classList.contains('is-swapping')) return;
+
+        const mainWrapper = showcase.querySelector('.project-showcase__main-img-wrapper');
+        const mainImg = mainWrapper.querySelector('.project-showcase__img');
+        const contentBox = showcase.querySelector('.project-showcase__content-box');
+        const label = contentBox.querySelector('.project-showcase__label');
+        const title = contentBox.querySelector('.project-showcase__title');
+        const backdropImg = backdrop.querySelector('img');
+
+        const centerData = JSON.parse(decodeURIComponent(showcase.dataset.event));
+        const sideData = JSON.parse(decodeURIComponent(backdrop.dataset.event));
+
+        // Guard against double-clicks
+        showcase.classList.add('is-swapping');
+
+        // Phase 1: Animate out
+        mainWrapper.classList.add('is-swapping');
+        backdrop.classList.add('is-swapping');
+        contentBox.classList.add('is-swapping');
+
+        setTimeout(() => {
+            // Phase 2: Swap content
+            mainImg.src = sideData.img;
+            mainImg.alt = sideData.name;
+            backdropImg.src = centerData.img;
+            backdropImg.alt = centerData.name;
+
+            label.textContent = `${sideData.type} · ${sideData.category}`;
+            title.textContent = sideData.name;
+
+            showcase.dataset.event = encodeURIComponent(JSON.stringify(sideData));
+            backdrop.dataset.event = encodeURIComponent(JSON.stringify(centerData));
+            backdrop.setAttribute('aria-label', centerData.name);
+
+            // Phase 3: Animate back in
+            mainWrapper.classList.remove('is-swapping');
+            backdrop.classList.remove('is-swapping');
+            contentBox.classList.remove('is-swapping');
+
+            // Re-enable interactions after transition completes
+            setTimeout(() => {
+                showcase.classList.remove('is-swapping');
+            }, 400);
+        }, 320);
     }
 
     createModalInfoRow(label, value, iconHtml) {

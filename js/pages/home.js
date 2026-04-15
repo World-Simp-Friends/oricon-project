@@ -12,9 +12,33 @@ const projects = [
             { label: 'View Photos', url: 'https://drive.google.com/drive/folders/1MhPky8YSW-ffNP3oIUs3_upoV9fOC1MH?usp=drive_link' }
         ]
     },
+    {
+        name: 'STELLAR STEP 2025',
+        type: 'EVENT',
+        category: 'HOLOLIVE',
+        img: 'assets/imgs/stellarstep.webp',
+        desc: 'A stellar VTuber fan gathering bringing the community together for an unforgettable experience.',
+        links: [
+            { label: 'View on Facebook', url: 'https://www.facebook.com/oriconproject' }
+        ]
+    },
+    {
+        name: 'FANTASIA',
+        type: 'EVENT',
+        category: 'HOLOLIVE',
+        img: 'assets/imgs/fantasia.webp',
+        desc: 'An immersive fan event celebrating the magic of VTuber culture and community connections.',
+        links: [
+            { label: 'View on Facebook', url: 'https://www.facebook.com/oriconproject' }
+        ]
+    },
 ];
 
 export default async function home() {
+    const centerProject = projects[0];
+    const leftProject = projects[1] || projects[0];
+    const rightProject = projects[2] || projects[0];
+
     const html = `
         <section class="hero" id="about">
             <div class="hero__orbit-decoration" aria-hidden="true">
@@ -78,15 +102,15 @@ export default async function home() {
                 <h2 class="title">OUR PROJECTS</h2>
                 <p class="desc">A Legacy of Creative Enthusiast Gatherings</p>
 
-                ${projects.map((project) => `
-                <article role="button" tabindex="0" data-event="${encodeURIComponent(JSON.stringify(project))}" class="project-showcase fade-in-up">
+                <article role="button" tabindex="0" data-event="${encodeURIComponent(JSON.stringify(centerProject))}" class="project-showcase fade-in-up">
                     
-                    <!-- Decor: Blurred background images -->
-                    <div class="project-showcase__backdrop top-left" aria-hidden="true">
-                        <img src="${project.img}" alt="">
+                    <!-- Side card: Left -->
+                    <div class="project-showcase__backdrop top-left" data-event="${encodeURIComponent(JSON.stringify(leftProject))}" role="button" tabindex="0" aria-label="${leftProject.name}">
+                        <img src="${leftProject.img}" alt="${leftProject.name}">
                     </div>
-                    <div class="project-showcase__backdrop bottom-right" aria-hidden="true">
-                        <img src="${project.img}" alt="">
+                    <!-- Side card: Right -->
+                    <div class="project-showcase__backdrop bottom-right" data-event="${encodeURIComponent(JSON.stringify(rightProject))}" role="button" tabindex="0" aria-label="${rightProject.name}">
+                        <img src="${rightProject.img}" alt="${rightProject.name}">
                     </div>
 
                     <!-- Decor: Floating dots -->
@@ -99,19 +123,18 @@ export default async function home() {
 
                     <!-- Main center image -->
                     <div class="project-showcase__main-img-wrapper">
-                        <img class="project-showcase__img" src="${project.img}" alt="${project.name}" loading="lazy" decoding="async" width="1280" height="720">
+                        <img class="project-showcase__img" src="${centerProject.img}" alt="${centerProject.name}" loading="lazy" decoding="async" width="1280" height="720">
                     </div>
                     
                     <!-- Bottom content overlap -->
                     <div class="project-showcase__content-box">
-                        <span class="project-showcase__label">${project.type} · ${project.category}</span>
-                        <h3 class="project-showcase__title">${project.name}</h3>
+                        <span class="project-showcase__label">${centerProject.type} · ${centerProject.category}</span>
+                        <h3 class="project-showcase__title">${centerProject.name}</h3>
                         <div class="project-showcase__cta">
                             <span>Nội dung chính</span>
                         </div>
                     </div>
                 </article>
-                `).join('')}
 
             </div>
         </section>

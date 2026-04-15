@@ -782,7 +782,8 @@
         width: 100%;
         max-width: 1000px;
         margin: var(--space-xl) auto;
-        padding: 50px 40px; /* Padding allows floating elements room */
+        padding: 50px 40px;
+        /* Padding allows floating elements room */
         cursor: pointer;
         display: flex;
         justify-content: center;
@@ -856,7 +857,8 @@
         opacity: 0.4;
         filter: blur(1px);
         transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        border: 2px solid rgba(255, 255, 255, 0.5); /* Subtle frame */
+        border: 2px solid rgba(255, 255, 255, 0.5);
+        /* Subtle frame */
     }
 
     .project-showcase__backdrop img {
@@ -886,7 +888,7 @@
         overflow: hidden;
         z-index: 1;
         box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-        border: 2px solid rgba(255,255,255,0.2);
+        border: 2px solid rgba(255, 255, 255, 0.2);
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -902,7 +904,7 @@
     .project-showcase:hover .project-showcase__main-img-wrapper {
         transform: translateY(-8px) scale(1.02);
         box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-        border-color: rgba(255,255,255,0.5);
+        border-color: rgba(255, 255, 255, 0.5);
     }
 
     .project-showcase:hover .project-showcase__backdrop.top-left {
@@ -929,16 +931,17 @@
         background: #000;
         z-index: 3;
         border-radius: 16px;
-        padding: 30px 40px 40px 40px; /* Extra bottom padding for pill */
+        padding: 30px 40px 40px 40px;
+        /* Extra bottom padding for pill */
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.7);
-        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
-    
+
     .project-showcase:hover .project-showcase__content-box {
         transform: translateX(-50%) translateY(4px);
     }
@@ -978,7 +981,7 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         transition: all var(--transition-base);
     }
 
@@ -986,6 +989,31 @@
         background: var(--accent);
         color: #fff;
         transform: translate(-50%, 50%) scale(1.05);
+    }
+
+    /* Backdrop clickability */
+    .project-showcase__backdrop {
+        cursor: pointer;
+        pointer-events: auto;
+    }
+
+    .project-showcase__backdrop:hover {
+        opacity: 0.65 !important;
+        filter: blur(0.5px);
+    }
+
+    /* Swap animation */
+    .project-showcase__main-img-wrapper.is-swapping,
+    .project-showcase__backdrop.is-swapping {
+        opacity: 0 !important;
+        transform: scale(0.92) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important;
+    }
+
+    .project-showcase__content-box.is-swapping {
+        opacity: 0 !important;
+        transform: translateX(-50%) translateY(10px) !important;
+        transition: opacity 0.3s ease, transform 0.3s ease !important;
     }
 
 
