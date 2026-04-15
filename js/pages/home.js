@@ -80,21 +80,38 @@ export default async function home() {
 
                 ${projects.map((project) => `
                 <article role="button" tabindex="0" data-event="${encodeURIComponent(JSON.stringify(project))}" class="project-showcase fade-in-up">
-                    <img class="project-showcase__img" src="${project.img}" alt="${project.name}" loading="lazy" decoding="async" width="1280" height="720">
-                    <div class="project-showcase__overlay"></div>
-                    <div class="project-showcase__content">
+                    
+                    <!-- Decor: Blurred background images -->
+                    <div class="project-showcase__backdrop top-left" aria-hidden="true">
+                        <img src="${project.img}" alt="">
+                    </div>
+                    <div class="project-showcase__backdrop bottom-right" aria-hidden="true">
+                        <img src="${project.img}" alt="">
+                    </div>
+
+                    <!-- Decor: Floating dots -->
+                    <div class="project-showcase__dots" aria-hidden="true">
+                        <div class="dot dot-1"></div>
+                        <div class="dot dot-2"></div>
+                        <div class="dot dot-3"></div>
+                        <div class="dot dot-4"></div>
+                    </div>
+
+                    <!-- Main center image -->
+                    <div class="project-showcase__main-img-wrapper">
+                        <img class="project-showcase__img" src="${project.img}" alt="${project.name}" loading="lazy" decoding="async" width="1280" height="720">
+                    </div>
+                    
+                    <!-- Bottom content overlap -->
+                    <div class="project-showcase__content-box">
                         <span class="project-showcase__label">${project.type} · ${project.category}</span>
                         <h3 class="project-showcase__title">${project.name}</h3>
                         <div class="project-showcase__cta">
-                            <span>EXPLORE</span>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <span>Nội dung chính</span>
                         </div>
                     </div>
                 </article>
                 `).join('')}
-
-                <!-- Single subtle accent: thin ruled line below the card -->
-                <div class="project-showcase__accent" aria-hidden="true"></div>
 
             </div>
         </section>

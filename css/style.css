@@ -776,30 +776,121 @@
 
 
 
-    /* === Project Showcase — Cinematic Card === */
+    /* === Project Showcase — Custom Layered Card === */
     .project-showcase {
         position: relative;
         width: 100%;
+        max-width: 1000px;
+        margin: var(--space-xl) auto;
+        padding: 50px 40px; /* Padding allows floating elements room */
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Floating dots */
+    .project-showcase__dots {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        z-index: 5;
+    }
+
+    .project-showcase__dots .dot {
+        position: absolute;
+        background-image: url('../assets/imgs/Logo transparent/Asset 29.png');
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: rotate(var(--rot, 0deg));
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
+    /* Top Left dot */
+    .project-showcase__dots .dot-1 {
+        --rot: 25deg;
+        width: 52px;
+        height: 52px;
+        top: 20%;
+        left: -60px;
+    }
+
+    /* Top Right dot */
+    .project-showcase__dots .dot-2 {
+        --rot: 45deg;
+        width: 68px;
+        height: 68px;
+        top: -40px;
+        right: -20px;
+    }
+
+    /* Bottom Left dot */
+    .project-showcase__dots .dot-3 {
+        --rot: -45deg;
+        width: 40px;
+        height: 40px;
+        bottom: -20px;
+        left: -50px;
+        top: auto;
+    }
+
+    /* Bottom Right dot */
+    .project-showcase__dots .dot-4 {
+        --rot: 25deg;
+        width: 48px;
+        height: 48px;
+        bottom: -40px;
+        right: -40px;
+        left: auto;
+    }
+
+    /* Decorative Backdrops (Hình ảnh phụ) */
+    .project-showcase__backdrop {
+        position: absolute;
+        width: 70%;
         aspect-ratio: 16 / 9;
         border-radius: var(--radius-lg);
         overflow: hidden;
-        cursor: pointer;
-        margin-top: var(--space-lg);
-        border: 1px solid rgba(72, 183, 212, 0.08);
-        transition: border-color var(--transition-base), box-shadow var(--transition-base);
+        z-index: 0;
+        opacity: 0.4;
+        filter: blur(1px);
+        transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        border: 2px solid rgba(255, 255, 255, 0.5); /* Subtle frame */
     }
 
-    .project-showcase:hover {
-        border-color: rgba(72, 183, 212, 0.2);
-        box-shadow:
-            0 16px 64px rgba(0, 0, 0, 0.5),
-            0 0 40px rgba(72, 183, 212, 0.06);
+    .project-showcase__backdrop img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 
-    /* Full-bleed image */
+    .project-showcase__backdrop.top-left {
+        top: 40px;
+        left: 40px;
+        transform: translate(-10%, -10%) scale(0.85);
+    }
+
+    .project-showcase__backdrop.bottom-right {
+        bottom: 40px;
+        right: 40px;
+        transform: translate(10%, 10%) scale(0.85);
+    }
+
+    /* Main Visual (Hình ảnh chính) */
+    .project-showcase__main-img-wrapper {
+        position: relative;
+        width: 80%;
+        aspect-ratio: 16 / 9;
+        border-radius: var(--radius-lg);
+        overflow: hidden;
+        z-index: 1;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        border: 2px solid rgba(255,255,255,0.2);
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+
     .project-showcase__img {
-        position: absolute;
-        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
@@ -807,46 +898,51 @@
         transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .project-showcase:hover .project-showcase__img {
-        transform: scale(1.04);
+    /* Hover effects for images */
+    .project-showcase:hover .project-showcase__main-img-wrapper {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        border-color: rgba(255,255,255,0.5);
     }
 
-    /* Gradient overlay — dark scrim at bottom for text readability */
-    .project-showcase__overlay {
+    .project-showcase:hover .project-showcase__backdrop.top-left {
+        transform: translate(-15%, -15%) scale(0.88);
+        opacity: 0.6;
+    }
+
+    .project-showcase:hover .project-showcase__backdrop.bottom-right {
+        transform: translate(15%, 15%) scale(0.88);
+        opacity: 0.6;
+    }
+
+    .project-showcase:hover .project-showcase__dots .dot {
+        transform: rotate(var(--rot, 0deg)) scale(1.15);
+    }
+
+    /* Bottom Content Box (Nội dung chính) */
+    .project-showcase__content-box {
         position: absolute;
-        inset: 0;
-        background: linear-gradient(to top,
-                rgba(5, 7, 47, 0.95) 0%,
-                rgba(5, 7, 47, 0.6) 35%,
-                rgba(5, 7, 47, 0.15) 60%,
-                transparent 100%);
-        pointer-events: none;
-        transition: opacity var(--transition-base);
-    }
-
-    .project-showcase:hover .project-showcase__overlay {
-        background: linear-gradient(to top,
-                rgba(5, 7, 47, 0.97) 0%,
-                rgba(5, 7, 47, 0.65) 38%,
-                rgba(5, 7, 47, 0.18) 62%,
-                transparent 100%);
-    }
-
-    /* Text content — bottom-left, vertically stacked */
-    .project-showcase__content {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        z-index: 2;
-        padding: 48px;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 55%;
+        background: #000;
+        z-index: 3;
+        border-radius: 16px;
+        padding: 30px 40px 40px 40px; /* Extra bottom padding for pill */
         display: flex;
         flex-direction: column;
-        align-items: flex-start;
-        gap: 12px;
+        align-items: center;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+        border: 1px solid rgba(255,255,255,0.1);
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    .project-showcase:hover .project-showcase__content-box {
+        transform: translateX(-50%) translateY(4px);
     }
 
-    /* Category label — smallest, sets context */
     .project-showcase__label {
         font-family: 'Montserrat', sans-serif;
         font-size: 1.1rem;
@@ -855,60 +951,41 @@
         text-transform: uppercase;
         color: var(--accent);
         opacity: 0.85;
+        margin-bottom: 8px;
     }
 
-    /* Project title — hero text, dramatically larger */
     .project-showcase__title {
         font-family: 'Modern Romance', sans-serif;
-        font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+        font-size: clamp(2rem, 2.5vw, 2.6rem);
         font-weight: 700;
         color: var(--cream);
         letter-spacing: 0.02em;
         line-height: 1.2;
-        max-width: 75%;
     }
 
-    /* CTA button — ghost style, accent colored */
+    /* CTA Pill overlapping bottom */
     .project-showcase__cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 8px;
-        margin-top: 8px;
-        padding: 10px 24px;
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 50%);
+        background: #fff;
+        color: #000;
+        padding: 10px 36px;
+        border-radius: 999px;
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.15rem;
+        font-size: 1.2rem;
         font-weight: 700;
-        letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: var(--accent);
-        border: 1px solid rgba(72, 183, 212, 0.25);
-        border-radius: var(--radius-sm);
-        background: transparent;
-        transition: all var(--transition-fast);
-    }
-
-    .project-showcase__cta svg {
-        stroke: var(--accent);
-        transition: transform var(--transition-base);
+        letter-spacing: 0.1em;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        transition: all var(--transition-base);
     }
 
     .project-showcase:hover .project-showcase__cta {
-        border-color: var(--accent);
-        background: rgba(72, 183, 212, 0.1);
-        color: var(--primary-light);
-    }
-
-    .project-showcase:hover .project-showcase__cta svg {
-        transform: translateX(4px);
-        stroke: var(--primary-light);
-    }
-
-    /* Subtle accent line below the card */
-    .project-showcase__accent {
-        width: 120px;
-        height: 1px;
-        margin: 24px auto 0;
-        background: linear-gradient(90deg, transparent 0%, rgba(72, 183, 212, 0.25) 50%, transparent 100%);
+        background: var(--accent);
+        color: #fff;
+        transform: translate(-50%, 50%) scale(1.05);
     }
 
 
