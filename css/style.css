@@ -791,153 +791,139 @@
         color: var(--accent);
     }
 
-    /* === Projects Showcase Container === */
-    .projects__showcase {
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    /* === Project Feature Item — Editorial Panel === */
-    .project__feature {
-        display: grid;
-        grid-template-columns: 1.3fr 1fr;
-        gap: 0;
-        background: rgba(10, 14, 74, 0.35);
-        border: 1px solid var(--border-color);
+    /* === Project Showcase — Cinematic Card === */
+    .project-showcase {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
         border-radius: var(--radius-lg);
         overflow: hidden;
         cursor: pointer;
+        margin-top: var(--space-lg);
+        border: 1px solid rgba(72, 183, 212, 0.08);
         transition: border-color var(--transition-base), box-shadow var(--transition-base);
-        will-change: box-shadow;
     }
 
-    .project__feature:hover {
-        border-color: rgba(72, 183, 212, 0.25);
-        box-shadow: var(--shadow-md);
+    .project-showcase:hover {
+        border-color: rgba(72, 183, 212, 0.2);
+        box-shadow:
+            0 16px 64px rgba(0, 0, 0, 0.5),
+            0 0 40px rgba(72, 183, 212, 0.06);
     }
 
-    /* Image panel */
-    .project__feature-visual {
-        position: relative;
-        overflow: hidden;
-        min-height: 340px;
-    }
-
-    .project__feature-visual .project__img {
+    /* Full-bleed image */
+    .project-showcase__img {
+        position: absolute;
+        inset: 0;
         width: 100%;
         height: 100%;
         object-fit: cover;
         display: block;
-        transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+        transition: transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
-    .project__feature:hover .project__img {
-        transform: scale(1.03);
+    .project-showcase:hover .project-showcase__img {
+        transform: scale(1.04);
     }
 
-    .project__feature-gradient {
+    /* Gradient overlay — dark scrim at bottom for text readability */
+    .project-showcase__overlay {
         position: absolute;
         inset: 0;
-        background: linear-gradient(90deg, transparent 60%, rgba(10, 14, 74, 0.7) 100%);
+        background: linear-gradient(to top,
+                rgba(5, 7, 47, 0.95) 0%,
+                rgba(5, 7, 47, 0.6) 35%,
+                rgba(5, 7, 47, 0.15) 60%,
+                transparent 100%);
         pointer-events: none;
+        transition: opacity var(--transition-base);
     }
 
-    /* Content panel */
-    .project__feature-content {
-        padding: 48px 44px;
+    .project-showcase:hover .project-showcase__overlay {
+        background: linear-gradient(to top,
+                rgba(5, 7, 47, 0.97) 0%,
+                rgba(5, 7, 47, 0.65) 38%,
+                rgba(5, 7, 47, 0.18) 62%,
+                transparent 100%);
+    }
+
+    /* Text content — bottom-left, vertically stacked */
+    .project-showcase__content {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 2;
+        padding: 48px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        gap: 20px;
-    }
-
-    /* Meta line */
-    .project__feature-meta {
-        display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 12px;
-        flex-wrap: wrap;
     }
 
-    .project__tag {
+    /* Category label — smallest, sets context */
+    .project-showcase__label {
         font-family: 'Montserrat', sans-serif;
-        font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: var(--cream-muted);
-        padding: 5px 14px 4px;
-        border: 1px solid rgba(72, 183, 212, 0.15);
-        border-radius: var(--radius-sm);
-        background: transparent;
-    }
-
-    .project__tag.accent {
-        color: var(--accent);
-        border-color: rgba(72, 183, 212, 0.25);
-    }
-
-    .project__tag-separator {
-        width: 16px;
-        height: 1px;
-        background: rgba(72, 183, 212, 0.2);
-    }
-
-    .project__feature-date {
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.2rem;
-        font-weight: 600;
-        color: var(--gold);
-        letter-spacing: 0.04em;
-    }
-
-    /* Title */
-    .project__feature-title {
-        font-size: 2.6rem;
-        font-family: 'Modern Romance', sans-serif;
-        font-weight: 700;
-        color: var(--cream);
-        letter-spacing: 0.02em;
-        line-height: 1.25;
-    }
-
-    /* Description */
-    .project__feature-desc {
-        font-size: 1.5rem;
-        color: var(--text-muted);
-        font-weight: 400;
-        line-height: 1.7;
-        max-width: 420px;
-    }
-
-    /* CTA */
-    .project__feature-cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        margin-top: 8px;
-        font-family: 'Montserrat', sans-serif;
-        font-size: 1.25rem;
+        font-size: 1.1rem;
         font-weight: 700;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--accent);
-        transition: color var(--transition-fast);
+        opacity: 0.85;
     }
 
-    .project__feature-cta svg {
-        transition: transform var(--transition-base);
+    /* Project title — hero text, dramatically larger */
+    .project-showcase__title {
+        font-family: 'Modern Romance', sans-serif;
+        font-size: clamp(2.4rem, 3.5vw, 3.6rem);
+        font-weight: 700;
+        color: var(--cream);
+        letter-spacing: 0.02em;
+        line-height: 1.2;
+        max-width: 75%;
+    }
+
+    /* CTA button — ghost style, accent colored */
+    .project-showcase__cta {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        padding: 10px 24px;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.15rem;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--accent);
+        border: 1px solid rgba(72, 183, 212, 0.25);
+        border-radius: var(--radius-sm);
+        background: transparent;
+        transition: all var(--transition-fast);
+    }
+
+    .project-showcase__cta svg {
         stroke: var(--accent);
+        transition: transform var(--transition-base);
     }
 
-    .project__feature:hover .project__feature-cta {
+    .project-showcase:hover .project-showcase__cta {
+        border-color: var(--accent);
+        background: rgba(72, 183, 212, 0.1);
         color: var(--primary-light);
     }
 
-    .project__feature:hover .project__feature-cta svg {
+    .project-showcase:hover .project-showcase__cta svg {
         transform: translateX(4px);
         stroke: var(--primary-light);
+    }
+
+    /* Subtle accent line below the card */
+    .project-showcase__accent {
+        width: 120px;
+        height: 1px;
+        margin: 24px auto 0;
+        background: linear-gradient(90deg, transparent 0%, rgba(72, 183, 212, 0.25) 50%, transparent 100%);
     }
 
 
@@ -1973,7 +1959,7 @@
     /* ============================================
        CARD HOVER — Elevation System
     ============================================ */
-    .project__feature {
+    .project-showcase {
         transition: all var(--transition-base);
     }
 
@@ -2121,6 +2107,24 @@
     .event-modal__badges {
         display: flex;
         gap: 10px;
+    }
+
+    .event-modal__badge {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--cream-muted);
+        padding: 5px 14px 4px;
+        border: 1px solid rgba(72, 183, 212, 0.15);
+        border-radius: var(--radius-sm);
+        background: rgba(5, 7, 47, 0.35);
+    }
+
+    .event-modal__badge--accent {
+        color: var(--accent);
+        border-color: rgba(72, 183, 212, 0.25);
     }
 
     .event-modal__title {

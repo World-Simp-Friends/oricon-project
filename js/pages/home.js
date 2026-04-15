@@ -77,30 +77,25 @@ export default async function home() {
             <div class="section-container">
                 <h2 class="title">OUR PROJECTS</h2>
                 <p class="desc">A Legacy of Creative Enthusiast Gatherings</p>
-                <div class="projects__showcase">
-                    ${projects.map((project, index) => `
-                        <article role="button" tabindex="0" data-event="${encodeURIComponent(JSON.stringify(project))}" class="project__feature fade-in-up">
-                            <div class="project__feature-visual">
-                                <img src="${project.img}" alt="${project.name}" class="project__img" loading="lazy" decoding="async" width="1280" height="720">
-                                <div class="project__feature-gradient"></div>
-                            </div>
-                            <div class="project__feature-content">
-                                <div class="project__feature-meta">
-                                    <span class="project__tag">${project.type}</span>
-                                    <span class="project__tag-separator"></span>
-                                    <span class="project__tag accent">${project.category}</span>
-                                    ${project.date ? `<span class="project__tag-separator"></span><span class="project__feature-date">${project.date}</span>` : ''}
-                                </div>
-                                <h3 class="project__feature-title">${project.name}</h3>
-                                <p class="project__feature-desc">${project.desc}</p>
-                                <div class="project__feature-cta">
-                                    <span>EXPLORE</span>
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                                </div>
-                            </div>
-                        </article>
-                    `).join('')}
-                </div>
+
+                ${projects.map((project) => `
+                <article role="button" tabindex="0" data-event="${encodeURIComponent(JSON.stringify(project))}" class="project-showcase fade-in-up">
+                    <img class="project-showcase__img" src="${project.img}" alt="${project.name}" loading="lazy" decoding="async" width="1280" height="720">
+                    <div class="project-showcase__overlay"></div>
+                    <div class="project-showcase__content">
+                        <span class="project-showcase__label">${project.type} · ${project.category}</span>
+                        <h3 class="project-showcase__title">${project.name}</h3>
+                        <div class="project-showcase__cta">
+                            <span>EXPLORE</span>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </div>
+                    </div>
+                </article>
+                `).join('')}
+
+                <!-- Single subtle accent: thin ruled line below the card -->
+                <div class="project-showcase__accent" aria-hidden="true"></div>
+
             </div>
         </section>
 

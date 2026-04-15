@@ -32,7 +32,7 @@ class Router {
             // Handle "View More" button
             const viewMoreBtn = e.target.closest('#view-more-btn');
             if (viewMoreBtn) {
-                const grid = document.querySelector('.projects__showcase');
+                const grid = document.querySelector('.projects .section-container');
                 if (grid) {
                     grid.classList.add('is-expanded');
                     viewMoreBtn.parentElement.style.display = 'none';
@@ -80,7 +80,7 @@ class Router {
 
     initEventModal() {
         document.addEventListener('click', (e) => {
-            const projectCard = e.target.closest('.project__feature[data-event]');
+            const projectCard = e.target.closest('.project-showcase[data-event]');
             if (projectCard) {
                 try {
                     const eventData = JSON.parse(decodeURIComponent(projectCard.getAttribute('data-event')));
@@ -117,8 +117,8 @@ class Router {
         title.textContent = data.name;
 
         badges.innerHTML = `
-            ${data.type ? `<span class="project__tag">${data.type}</span>` : ''}
-            ${data.category ? `<span class="project__tag accent">${data.category}</span>` : ''}
+            ${data.type ? `<span class="event-modal__badge">${data.type}</span>` : ''}
+            ${data.category ? `<span class="event-modal__badge event-modal__badge--accent">${data.category}</span>` : ''}
         `;
 
         let infoHtml = '';

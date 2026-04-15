@@ -14,12 +14,14 @@
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .projects__showcase .project__feature {
-        grid-template-columns: 1fr;
+    /* Project showcase — tablet */
+    .project-showcase__content {
+        padding: 32px;
     }
 
-    .project__feature-visual {
-        min-height: 240px;
+    .project-showcase__title {
+        font-size: clamp(2rem, 3vw, 2.8rem);
+        max-width: 85%;
     }
 
     .works__wrapper {
@@ -112,17 +114,22 @@
         margin-right: 10rem;
     }
 
-    /* Project feature — large screen */
-    .project__feature-title {
-        font-size: 3rem;
+    /* Project showcase — large screen */
+    .project-showcase__content {
+        padding: 56px;
     }
 
-    .project__tag {
-        font-size: 1.3rem;
+    .project-showcase__title {
+        font-size: 4rem;
     }
 
-    .project__feature-desc {
-        font-size: 1.6rem;
+    .project-showcase__label {
+        font-size: 1.2rem;
+    }
+
+    .project-showcase__cta {
+        font-size: 1.2rem;
+        padding: 12px 28px;
     }
 
     /* Network — large screen */
@@ -191,22 +198,28 @@
         padding: 6px 16px 4px;
     }
 
-    /* Project feature — tablet */
-    .project__feature {
-        grid-template-columns: 1fr;
+    /* Project showcase — mid tablet */
+    .project-showcase {
+        margin-top: var(--space-md);
     }
 
-    .project__feature-visual {
-        min-height: 260px;
+    .project-showcase__content {
+        padding: 28px;
+        gap: 10px;
     }
 
-    .project__feature-content {
-        padding: 32px 28px;
+    .project-showcase__title {
+        font-size: clamp(1.8rem, 2.8vw, 2.4rem);
+        max-width: 90%;
     }
 
-    .project__tag {
-        padding: 5px 12px 4px;
-        font-size: 1.1rem;
+    .project-showcase__label {
+        font-size: 1rem;
+    }
+
+    .project-showcase__cta {
+        font-size: 1rem;
+        padding: 8px 18px;
     }
 
     /* Network tablet */
@@ -595,43 +608,34 @@
         margin-left: 0px;
     }
 
-    .project__feature {
-        grid-template-columns: 1fr;
+    /* === Project showcase mobile === */
+    .project-showcase {
+        aspect-ratio: 4 / 3;
+        margin-top: var(--space-md);
     }
 
-    .project__feature-visual {
-        min-height: 200px;
-    }
-
-    .project__feature-gradient {
-        background: linear-gradient(180deg, transparent 50%, rgba(10, 14, 74, 0.6) 100%);
-    }
-
-    .project__feature-content {
+    .project-showcase__content {
         padding: 24px 20px;
-        gap: 14px;
+        gap: 8px;
     }
 
-    .project__feature-title {
+    .project-showcase__title {
         font-size: 2rem;
-    }
-
-    .project__feature-desc {
-        font-size: 1.4rem;
         max-width: 100%;
+        line-height: 1.3;
     }
 
-    .project__tag {
-        font-size: 1.1rem;
-        padding: 4px 10px 3px;
+    .project-showcase__label {
+        font-size: 0.95rem;
     }
 
-    .project__feature-date {
-        font-size: 1.1rem;
+    .project-showcase__cta {
+        padding: 8px 18px;
+        font-size: 1rem;
     }
 
-    .project__feature-cta {
-        font-size: 1.15rem;
+    .project-showcase__accent {
+        display: none;
     }
 
     /* === Network mobile === */
