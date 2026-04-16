@@ -798,51 +798,66 @@
         z-index: 5;
     }
 
+    /* Stars — CSS glyph approach; harmonious with blue/navy/cyan/purple palette */
     .project-showcase__dots .dot {
         position: absolute;
-        background-image: url('../assets/imgs/Logo transparent/Asset 29.png');
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        transform: rotate(var(--rot, 0deg));
-        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-style: normal;
+        line-height: 1;
+        pointer-events: none;
+        user-select: none;
+        transform: rotate(var(--rot, 0deg)) scale(var(--sc, 1));
+        transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.6s ease;
     }
 
-    /* Top Left dot */
+    .project-showcase__dots .dot::before {
+        content: '✦';
+        display: block;
+        font-size: var(--star-size, 18px);
+        color: var(--star-color, rgba(72, 183, 212, 0.45));
+    }
+
+    /* Star 1 — upper-left, prominent cyan */
     .project-showcase__dots .dot-1 {
-        --rot: 25deg;
-        width: 52px;
-        height: 52px;
-        top: 20%;
-        left: -60px;
+        --rot: 18deg;
+        --sc: 1;
+        --star-size: 28px;
+        --star-color: rgba(72, 183, 212, 0.70);
+        top: 18%;
+        left: -44px;
     }
 
-    /* Top Right dot */
+    /* Star 2 — upper-right, large, visible purple-blue */
     .project-showcase__dots .dot-2 {
-        --rot: 45deg;
-        width: 68px;
-        height: 68px;
-        top: -40px;
-        right: -20px;
+        --rot: 42deg;
+        --sc: 1;
+        --star-size: 38px;
+        --star-color: rgba(113, 87, 229, 0.65);
+        top: -32px;
+        right: -14px;
     }
 
-    /* Bottom Left dot */
+    /* Star 3 — lower-left, small-medium, clear cyan */
     .project-showcase__dots .dot-3 {
-        --rot: -45deg;
-        width: 40px;
-        height: 40px;
-        bottom: -20px;
-        left: -50px;
+        --rot: -28deg;
+        --sc: 1;
+        --star-size: 22px;
+        --star-color: rgba(109, 205, 227, 0.65);
+        bottom: -14px;
+        left: -38px;
         top: auto;
     }
 
-    /* Bottom Right dot */
+    /* Star 4 — lower-right, prominent purple */
     .project-showcase__dots .dot-4 {
-        --rot: 25deg;
-        width: 48px;
-        height: 48px;
-        bottom: -40px;
-        right: -40px;
+        --rot: 33deg;
+        --sc: 1;
+        --star-size: 30px;
+        --star-color: rgba(113, 87, 229, 0.60);
+        bottom: -28px;
+        right: -30px;
         left: auto;
     }
 
@@ -918,27 +933,30 @@
     }
 
     .project-showcase:hover .project-showcase__dots .dot {
-        transform: rotate(var(--rot, 0deg)) scale(1.15);
+        transform: rotate(var(--rot, 0deg)) scale(1.2);
     }
 
-    /* Bottom Content Box (Nội dung chính) */
+    /* Bottom Content Box — compact glassmorphism: frosted dark-navy tint, moderate blur */
     .project-showcase__content-box {
         position: absolute;
         bottom: 20px;
         left: 50%;
         transform: translateX(-50%);
-        width: 55%;
-        background: #000;
+        width: 44%;
+        background: rgba(5, 10, 55, 0.54);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         z-index: 3;
-        border-radius: 16px;
-        padding: 30px 40px 40px 40px;
+        border-radius: 14px;
+        padding: 16px 28px 36px 28px;
         /* Extra bottom padding for pill */
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(72, 183, 212, 0.14);
+        border: 1px solid rgba(72, 183, 212, 0.15);
+        border-top: 1px solid rgba(72, 183, 212, 0.35);
         transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
     }
 
@@ -959,21 +977,21 @@
 
     .project-showcase__title {
         font-family: 'Modern Romance', sans-serif;
-        font-size: clamp(2rem, 2.5vw, 2.6rem);
+        font-size: clamp(1.3rem, 1.5vw, 1.7rem);
         font-weight: 700;
         color: var(--cream);
         letter-spacing: 0.02em;
         line-height: 1.2;
     }
 
-    /* CTA Pill overlapping bottom */
+    /* CTA Pill overlapping bottom — purple fill per design spec */
     .project-showcase__cta {
         position: absolute;
         bottom: 0;
         left: 50%;
         transform: translate(-50%, 50%);
-        background: #fff;
-        color: #000;
+        background: var(--purple);
+        color: var(--cream);
         padding: 10px 36px;
         border-radius: 999px;
         font-family: 'Montserrat', sans-serif;
@@ -981,14 +999,15 @@
         font-weight: 700;
         text-transform: uppercase;
         letter-spacing: 0.1em;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 0 4px 18px rgba(113, 87, 229, 0.35);
         transition: all var(--transition-base);
     }
 
     .project-showcase:hover .project-showcase__cta {
-        background: var(--accent);
-        color: #fff;
+        background: #8C71F0;
+        color: var(--cream);
         transform: translate(-50%, 50%) scale(1.05);
+        box-shadow: 0 6px 24px rgba(113, 87, 229, 0.5);
     }
 
     /* Backdrop clickability */
