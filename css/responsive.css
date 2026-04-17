@@ -608,33 +608,63 @@
         margin-left: 0px;
     }
 
-    /* === Project showcase mobile === */
+    /* === Project showcase mobile optimization === */
     .project-showcase {
-        aspect-ratio: 4 / 3;
-        margin-top: var(--space-md);
+        aspect-ratio: auto;
+        min-height: 480px;
+        padding: 40px 10px;
+        margin-top: 20px;
+        overflow: visible;
     }
 
-    .project-showcase__content {
-        padding: 24px 20px;
-        gap: 8px;
+    .project-showcase__backdrop {
+        width: 85%;
+        opacity: 0.25;
+        border-width: 1px;
+    }
+
+    .project-showcase__backdrop.top-left {
+        top: 20px;
+        left: 20px;
+        transform: translate(-5%, -5%) scale(0.9);
+    }
+
+    .project-showcase__backdrop.bottom-right {
+        bottom: 20px;
+        right: 20px;
+        transform: translate(5%, 5%) scale(0.9);
+    }
+
+    .project-showcase__main-img-wrapper {
+        width: 95%;
+        border-width: 1px;
+    }
+
+    .project-showcase__content-box {
+        width: 88%;
+        bottom: 10px;
+        padding: 18px 20px 32px 20px; /* Reduced side padding, ensured bottom space */
+        border-radius: 12px;
     }
 
     .project-showcase__title {
-        font-size: 2rem;
-        max-width: 100%;
-        line-height: 1.3;
+        font-size: 1.8rem;
+        line-height: 1.25;
+        margin-top: 4px;
     }
 
     .project-showcase__label {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+        margin-bottom: 6px;
     }
 
     .project-showcase__cta {
-        padding: 8px 18px;
-        font-size: 1rem;
+        padding: 10px 24px;
+        font-size: 1.1rem;
+        bottom: 0;
     }
 
-    .project-showcase__accent {
+    .project-showcase__dots {
         display: none;
     }
 
