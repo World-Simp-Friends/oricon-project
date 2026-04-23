@@ -71,7 +71,7 @@ export default async function home() {
                 </div>
                 <div class="hero__visual">
                     <div class="hero__visual-frame">
-                        <img src="assets/imgs/c118ae16fa54b8e4718cc01416f4abd4.webp" alt="WS&F team illustration" fetchpriority="high" decoding="async" width="800" height="800">
+                        <img src="assets/imgs/f8035fa0a33a5ec82ed0a18d5eda7221.jpg" alt="WS&F team illustration" fetchpriority="high" decoding="async" width="800" height="800">
                     </div>
                     <img src="assets/imgs/Logo transparent/Asset 7.png" alt="" class="hero__star-accent" aria-hidden="true" width="60" height="60">
                 </div>
